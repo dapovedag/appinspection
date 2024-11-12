@@ -1,0 +1,367 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto Slab', serif;
+    background-image: url('Page De Garde Word.jfif');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100vh;
+    padding-top: 0;
+    padding-bottom: 2px;
+}
+
+/* Tarjeta de ingreso de clave y confirmación de dirección */
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 95%;
+    max-width: 400px;
+    background-color: #fcfcfc;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    margin-top: 20vh;
+    text-align: center;
+}
+
+.card h2 {
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.card input {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #aaa;
+    margin-bottom: 10px;
+    width: 80%;
+}
+
+.card button {
+    background-color: #aae6d9;
+    color: #333;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.card button:hover {
+    background-color: #88ccb8;
+}
+
+/* Título principal */
+.title {
+    font-size: 16px;
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 1px;
+    text-align: center;
+    padding-top: 1px;
+}
+
+/* Recuadro de la cámara */
+.camera-frame {
+    width: 95%;
+    max-width: 500px;
+    height: calc(100vh - 32px);
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+/* Botón de captura */
+#capture-button {
+    position: absolute;
+    bottom: 10px;
+    background-color: #000;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+#capture-button:hover {
+    background-color: #333;
+}
+
+#capture-button svg {
+    stroke: #fff;
+    width: 24px;
+    height: 24px;
+}
+
+/* Recuadro de vista previa de la foto */
+.photo-preview {
+    width: 95%;
+    max-width: 500px;
+    height: calc(100vh - 32px);
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Título del recuadro de vista previa */
+.preview-title {
+    position: absolute;
+    top: 10px;
+    font-size: 18px;
+    color: #333;
+    background-color: #e6e6e6;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+/* Imagen capturada ajustada al tamaño del recuadro */
+.photo-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+/* Botones de aprobar y rechazar superpuestos en la parte inferior */
+.preview-buttons {
+    position: absolute;
+    bottom: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+/* Botón de "Approve" con color verde y tipografía delgada */
+.preview-buttons button:nth-child(1) {
+    order: 2;
+    background-color: #aae6d9;
+    color: #333;
+    font-weight: 400;
+}
+
+/* Botón de "Reject" con color rojo y tipografía delgada */
+.preview-buttons button:nth-child(2) {
+    order: 1;
+    background-color: #e6b0aa;
+    color: #333;
+    font-weight: 400;
+}
+
+.preview-buttons button {
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-family: 'Roboto Slab', serif;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.preview-buttons button:hover {
+    filter: brightness(0.9);
+}
+
+/* Estilo del mensaje de agradecimiento */
+.thank-you {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 95%;
+    max-width: 500px;
+    height: 50vh;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    padding: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.thank-you h2 {
+    font-size: 14px;
+    color: #333;
+    font-weight: 400;
+}
+
+#address-display {
+    margin-bottom: 16px;
+}
+
+/* Estilo de la tarjeta de la encuesta */
+.survey-card {
+    width: 95%;
+    max-width: 500px;
+    height: auto;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+    gap: 15px;
+    text-align: left;
+}
+
+.survey-title {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* Estilo para preguntas de selección múltiple */
+.multiple-choice .option-container,
+.single-choice .option-container {
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+}
+
+.option-container label {
+    font-size: 14px;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: flex-start;
+    width: 100%;
+    padding-left: 5px;
+}
+
+.option-container input[type="checkbox"],
+.option-container input[type="radio"] {
+    margin-right: 10px;
+}
+
+/* Estilo para preguntas de texto */
+.text-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+/* Botones de la encuesta */
+.survey-button, .back-button {
+    width: 100px;
+    background-color: #aae6d9;
+    color: #333;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    font-family: 'Roboto Slab', serif;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.survey-button:hover {
+    background-color: #99d6c2;
+}
+
+.back-button {
+    background-color: #e6b0aa;
+    margin-right: 10px;
+}
+
+.back-button:hover {
+    filter: brightness(0.9);
+}
+
+/* Contenedor de botones */
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+/* Ajuste en la tarjeta de localización para reducir altura */
+.location-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 95%;
+    max-width: 400px;
+    background-color: #fcfcfc;
+    padding: 15px; /* Reducido de 20px a 15px */
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    margin-top: 15px; /* Reducido de 20px a 15px */
+    text-align: center;
+}
+
+/* Ajustes adicionales para reducir el tamaño de la tarjeta */
+#location-time {
+    font-size: 1px;
+    color: #333;
+    margin-bottom: 1px; /* Reducido de 10px a 8px */
+}
+
+#map {
+    width: 60%;
+    height: 50px; /* Reducido para que la tarjeta sea más corta */
+    margin-top: 2px; /* Ajustado para reducir el espacio vertical */
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Botón de ubicación ajustado */
+.location-card button {
+    background-color: #aae6d9;
+    color: #333;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Roboto Slab', serif;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+.location-card button:hover {
+    background-color: #88ccb8;
+}

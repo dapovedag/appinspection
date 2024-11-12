@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Capture</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+    <!-- Tarjeta de ingreso de clave -->
+    <div id="order-input" class="card">
+        <h2>Enter Order Number</h2>
+        <input type="text" id="order-key" placeholder="Enter Order Number">
+        <button onclick="checkOrder()">Submit</button>
+    </div>
+
+    <!-- Tarjeta de confirmación de dirección -->
+    <div id="address-confirmation" class="card" style="display: none;">
+        <p id="address-display">The registered address is: 742 Evergreen Terrace</p>
+        <button onclick="showLocationCard()">Accept</button>
+    </div>
+
+    <!-- Tarjeta de ubicación y mapa -->
+    <div id="location-card" class="location-card" style="display: none;">
+        <p id="location-time"></p>
+        <button onclick="getLocation()">Get Location</button>
+        <div id="map" style="height: 300px; width: 100%; margin-top: 15px;"></div>
+        <button onclick="startCamera()">Proceed to Camera</button>
+    </div>
+
+    <!-- Título de instrucción y cuadro de la cámara -->
+    <h1 class="title" id="instruction" style="display: none;">Take a Photo of the Living Room</h1>
+    <div class="camera-frame" id="camera-frame" style="display: none;">
+        <video id="video" autoplay></video>
+        <button id="capture-button" onclick="capturePhoto()">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <circle cx="12" cy="12" r="3"></circle>
+            </svg>
+        </button>
+    </div>
+    
+    <!-- Contenedor para la vista previa de la foto capturada -->
+    <div class="photo-preview" id="photo-preview" style="display: none;">
+        <h2 class="preview-title" id="photo-title">Living Room</h2>
+        <img id="captured-image" alt="Captured Photo">
+        <div class="preview-buttons">
+            <button onclick="approvePhoto()">Approve</button>
+            <button onclick="rejectPhoto()">Reject</button>
+        </div>
+    </div>
+
+    <!-- Pregunta 1 - Selección múltiple -->
+    <div id="survey-question-1" class="survey-card" style="display: none;">
+        <h2 class="survey-title">1 of 3 - Type of Roof</h2>
+        <div class="option-container multiple-choice"><label><input type="checkbox" name="roof-type" value="Asphalt shingles"> Asphalt shingles</label></div>
+        <div class="option-container multiple-choice"><label><input type="checkbox" name="roof-type" value="Metal"> Metal</label></div>
+        <div class="option-container multiple-choice"><label><input type="checkbox" name="roof-type" value="Flat"> Flat</label></div>
+        <div class="option-container multiple-choice"><label><input type="checkbox" name="roof-type" value="Membrane"> Membrane</label></div>
+        <div class="option-container multiple-choice"><label><input type="checkbox" name="roof-type" value="Age of the roof shingles"> Age of the roof shingles</label></div>
+        <button class="survey-button" onclick="nextQuestion(1)">Next</button>
+    </div>
+
+    <!-- Pregunta 2 - Selección única -->
+    <div id="survey-question-2" class="survey-card" style="display: none;">
+        <h2 class="survey-title">2 of 3 - Air Conditioning</h2>
+        <div class="option-container single-choice"><label><input type="radio" name="air-conditioning" value="Yes"> Yes</label></div>
+        <div class="option-container single-choice"><label><input type="radio" name="air-conditioning" value="No"> No</label></div>
+        <div class="button-container">
+            <button class="back-button" onclick="previousQuestion(2)">Back</button>
+            <button class="survey-button" onclick="nextQuestion(2)">Next</button>
+        </div>
+    </div>
+
+    <!-- Tarjeta de la Pregunta 3: Entrada de Texto -->
+    <div id="survey-question-3" class="survey-card" style="display: none;">
+        <h2 class="survey-title">3 of 3 - Type of Flooring</h2>
+        <input type="text" id="flooring-type" class="text-input" placeholder="Enter flooring type...">
+        <div class="button-container">
+            <button class="back-button" onclick="previousQuestion(3)">Back</button>
+            <button class="survey-button" onclick="submitSurvey()">Finish</button>
+        </div>
+    </div>
+
+    <!-- Mensaje de agradecimiento final -->
+    <div class="thank-you" id="thank-you-survey" style="display: none;">
+        <h2>Thank you for submitting the photos and completing the survey!</h2>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
